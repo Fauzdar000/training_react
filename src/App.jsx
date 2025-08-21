@@ -27,6 +27,8 @@ import ParentContext from "./components/contextAPI/ParentContext";
 import CounterComp from "./components/CounterComp";
 import UserList from "./components/UserList";
 import LoginFormHook from "./reactFormHook/LoginFormHook";
+import FetchUser from "./fetchAPI/FetchUser";
+import AxiosPost from "./fetchAPI/AxiosPost";
 
 function App() {
 
@@ -83,6 +85,8 @@ function App() {
 <CounterComp/>
 <UserList/>
 <LoginFormHook/>
+<FetchUser/>
+<AxiosPost/>
 
     </div>
   );
