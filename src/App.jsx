@@ -29,6 +29,7 @@ import UserList from "./components/UserList";
 import LoginFormHook from "./reactFormHook/LoginFormHook";
 import FetchUser from "./fetchAPI/FetchUser";
 import AxiosPost from "./fetchAPI/AxiosPost";
+import ImageGen from "./ImageGenerator/ImageGen";
 
 function App() {
 
@@ -80,13 +81,14 @@ function App() {
 
 <p>parent</p>
 <Parent/> */}
-<ParentContext/>
+{/* <ParentContext/>
 
 <CounterComp/>
 <UserList/>
-<LoginFormHook/>
-<FetchUser/>
-<AxiosPost/>
+<LoginFormHook/> */}
+{/* <FetchUser/> */}
+{/* <AxiosPost/> */}
+<ImageGen/>
 
     </div>
   );

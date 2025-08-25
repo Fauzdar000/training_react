@@ -1,75 +1,113 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import './Axious.css'
+  import React, { useEffect, useState } from 'react'
+  import axios from 'axios';
+  import './Axious.css'
 
-const AxiosPost = () => {
-    const [post, setpost] = useState([]);
+  const AxiosPost = () => {
+      const [post, setpost] = useState([]);
 
-useEffect(() => {
+  useEffect(() => {
 
-    axios.get('https://jsonplaceholder.typicode.com/posts') // API call
-    .then((response) =>
-    {
-        setpost(response.data)  // Dont need to convert into json as axios does it for you
-    })
-    .catch((error) =>{
-        console.error(error) // error handling
-    })
-
-
-
-
+      axios.get('https://jsonplaceholder.typicode.com/posts') // API call
     
-,[]})
+      .then((response) =>
+      {
+          setpost(response.data)  // Dont need to convert into json as axios does it for you
+      })
+      .catch((error) =>{
+          console.error(error) // error handling
+      })
+      
+      // axios.delete('https://jsonplaceholder.typicode.com/posts/1')
+      //   .then((response) => {
+      //     console.log('Deleted:', response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //   });
+
+   
 
 
-  return (
-    <div>
-        <h1>Axios</h1>
-<ul>
-        {post.map((items) =>(
+
+
+
+    //     axios.post('https://jsonplaceholder.typicode.com/posts', {
+    //       method: 'DELETE',
+    // }, []);
+
+
+
+
+      
+  },[])
+
+    const handleDelete =(id) => {
+          axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+            .then((response) => {
+              console.log('Deleted:', response.data);
          
-         <li  key={items.id}>
-            <h3>{items.title}</h3>
-            <p>{items.body}</p>
-         </li>
-
-        ))}
-        </ul>
-
-              <table className='table'
-
-      >
-        <tr>
-          <th>ID</th>
-           <th>USERID</th>
-          <th>TITLE</th>
-         
- 
+            setpost(post.filter((items) => items.id !== id));
+            alert('Deleted Successfully ');
+               })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
 
 
-        </tr>
-        { post.map((items) => (
-        
-          <tr key={items.id}>
-            <td>{items.id}</td>
-            <td>{items.userId}</td>
-            <td>{items.title}</td>
-           
+
+    return (
+      <div>
+          <h1>Axios</h1>
+  <ul>
+          {post.map((items) =>(
           
-</tr>
-        ))}
+          <li  key={items.id}>
+              <h3>{items.title}</h3>
+              <p>{items.body}</p>
+          </li>
+
+          ))}
+          </ul>
+
+                <table className='table'
+
+        >
+          <tr>
+            <th>ID</th>
+            <th>USERID</th>
+            <th>TITLE</th>
+          
+  
+
+
+          </tr>
+          { post.map((items) => (
+          
+            <tr key={items.id}>
+              <td>{items.id}</td>
+              <td>{items.userId}</td>
+              <td>{items.title}</td>
+              <td>
+                <button onClick={()=> handleDelete(items.id)} className='btn'>
+                  delete
+                </button>
+              </td>
+            
+            
+  </tr>
+          ))}
 
 
 
-       
-      </table>
+        
+        </table>
 
 
 
 
-    </div>
-  )
-}
+      </div>
+    )
+  }
 
-export default AxiosPost
+  export default AxiosPost
